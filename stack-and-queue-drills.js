@@ -19,6 +19,7 @@ function main() {
   console.log(findOpenParen('((1+2)+3)'));
   console.log(findOpenParen('((1+2)+3'));
   console.log(findOpenParen('(1+2)+3)'));
+  console.log(findOpenParen('( () () () ( () () () ()'));
 }
 
 function peek(stack) {
@@ -64,17 +65,26 @@ function is_palindrome(s) {
 }
 
 
-//input: ((1+2)+3)
-//output: null
+// input: ((1+2)+3)
+// output: null
 
 // input2: ((1+2)+3
 // output2: 0
 
-//input3: (1+2)+3)
-//output3: 7
+// input3: (1+2)+3)
+// output3: 7
 
-// ((1+2)*4+1
+// input4: ([{}])
+// output4: null
 
+// input5: ([{}]
+// output5: 0
+
+// input6: ([{})
+// output6: 1
+
+// input7: ([)], [(]), {(}), 
+// output7: 2
 
 function findOpenParen(exp) {
   const expLength = exp.length;
