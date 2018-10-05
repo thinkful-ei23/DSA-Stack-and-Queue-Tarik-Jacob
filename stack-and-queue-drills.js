@@ -12,18 +12,18 @@ function main() {
   // peek(starTrek);
   let tempNode = starTrek.top;
   console.log(tempNode.next.data);
-  // displayStack(starTrek);
-  // remove(starTrek, 'McCoy');
-  // console.log(is_palindrome('rac ecar'));
-  // console.log(is_palindrome("dad"));
-  // console.log(is_palindrome("A man, a plan, a canal: Panama"));
-  // console.log(is_palindrome("1001"));
-  // console.log(is_palindrome("Tauhida"));
-  // console.log(findOpenParen('((1+2)+3)'));
-  // console.log(findOpenParen('((1+2)+3'));
-  // console.log(findOpenParen('(1+2)+3)'));
-  // console.log(findOpenParen('( () () () ( () () () ()'));
-  // console.log(findOpenParen('()()())(()()()'));
+  displayStack(starTrek);
+  remove(starTrek, 'McCoy');
+  console.log(is_palindrome('rac ecar'));
+  console.log(is_palindrome("dad"));
+  console.log(is_palindrome("A man, a plan, a canal: Panama"));
+  console.log(is_palindrome("1001"));
+  console.log(is_palindrome("Tauhida"));
+  console.log(findOpenParen('((1+2)+3)'));
+  console.log(findOpenParen('((1+2)+3'));
+  console.log(findOpenParen('(1+2)+3)'));
+  console.log(findOpenParen('( () () () ( () () () ()'));
+  console.log(findOpenParen('()()())(()()()'));
   const sortMe = new Stack();
   sortMe.push(3);
   sortMe.push(4);
@@ -31,6 +31,7 @@ function main() {
   sortMe.push(5);
   displayStack(sortMe);
   sortStack(sortMe);
+  console.log(JSON.stringify(sortMe));
 }
 
 function peek(stack) {
@@ -74,34 +75,7 @@ function is_palindrome(s) {
   }
   return false;
 }
-// input: ((1+2)+3)
-// output: null
 
-// input2: ((1+2)+3
-// output2: 0
-
-// input3: (1+2)+3)
-// output3: 7
-
-// input4: ([{}])
-// output4: null
-
-// input5: ([{}]
-// output5: 0
-
-// input6: ([{})
-// output6: 1
-
-// input7: ([)], [(]), {(}), 
-// output7: 2
-
-// (1-2)
-// )1-2
-// ((1+2)+3)
-// ((1+2)+3
-// (1+2)+3)
-// (()()()(()()()()
-// ()()())(()()()
 function findOpenParen(exp) {
   let expStack = new Stack();
   let error;
@@ -121,46 +95,20 @@ function findOpenParen(exp) {
   }
   return error;
 }
-// store variable smallest value === stack.top
-// store largest num
-// input STACK: 9451186
-// output: 9 5 4 
 
-// input: d i y c
-// output: y i d c 
 
-// STACK 1    STACK 2
-// 459
-// i              y
-// 954
-
-function sortStack(stack, stack2 = new Stack(), smallestNum = stack.top.data, largestNum = null) {
-  if (stack2.top) {
-    if (stack2.top.data === smallestNum) {
-      displayStack(stack2);
-      return stack2;
+function sortStack(stack) {
+  let tempStack = new Stack();
+  while (stack.top) {
+    let temp = stack.pop();
+    while (tempStack.top && tempStack.top.data < temp) {
+      stack.push(tempStack.pop());
     }
+    tempStack.push(temp);
   }
-  // 3 4 1 5
-  let largest = 0;
-  let tempNode = stack.top;
-
-  while (tempNode !== null) {
-    if (tempNode.data > largest && tempNode.data !== largestNum) {
-      largest = tempNode.data;
-    }
-    if (tempNode.data < smallestNum) {
-      smallestNum = tempNode.data;
-    }
-    tempNode = tempNode.next;
-  }
-
-  stack2.push(largest);
-  largestNum = largest;
-  
-  return sortStack(stack, stack2, smallestNum, largestNum);
+  displayStack(tempStack);
+  return tempStack;
 }
-
 
 
 main();
