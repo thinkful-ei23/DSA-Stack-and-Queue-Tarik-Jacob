@@ -86,38 +86,43 @@ function is_palindrome(s) {
 // input7: ([)], [(]), {(}), 
 // output7: 2
 
+// function findOpenParen(exp) {
+//   const expLength = exp.length;
+//   let open = 0;
+//   let count = 0;
+//   let expStack = new Stack();
+//   for (let i = 0; i < exp.length; i++) {
+//     if (exp[i] === '(') {
+//       open++;
+//     }
+//     if (exp[i] === ')') {
+//       open--;
+//     }
+//     expStack.push(exp[i]);
+//   }
+
+//   if (open === 0) {
+//     return null;
+//   }
+//   let poppedItem;
+
+//   while (open !== 0) {
+//     poppedItem = expStack.pop();
+//     if (poppedItem === '(') {
+//       open--;
+//     }
+//     if (poppedItem === ')') {
+//       open++;
+//     }
+//     count++;
+//   }
+//   const position = expLength - count;
+//   return `Parenthetical error at ${position}`;
+// }
 function findOpenParen(exp) {
-  const expLength = exp.length;
-  let open = 0;
-  let count = 0;
   let expStack = new Stack();
-  for (let i = 0; i < exp.length; i++) {
-    if (exp[i] === '(') {
-      open++;
-    }
-    if (exp[i] === ')') {
-      open--;
-    }
-    expStack.push(exp[i]);
+  for (let i=0; i < exp.length; i++) {
+    
   }
-
-  if (open === 0) {
-    return null;
-  }
-  let poppedItem;
-
-  while (open !== 0) {
-    poppedItem = expStack.pop();
-    if (poppedItem === '(') {
-      open--;
-    }
-    if (poppedItem === ')') {
-      open++;
-    }
-    count++;
-  }
-  const position = expLength - count;
-  return `Parenthetical error at ${position}`;
 }
-
 main();
